@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS MOBILE</title>
+    <style>
+        /* The Aesthetic (Tier 2: Value Zone) */
+        :root { --neon: #00ffcc; --bg: #0a0a0a; }
+        body { background: var(--bg); color: var(--neon); font-family: monospace; margin: 0; padding: 10px; }
+        
+        .header { border: 1px solid var(--neon); padding: 10px; text-align: center; box-shadow: 0 0 10px rgba(0,255,204,0.2); }
+        .feed { margin-top: 20px; }
+        
+        .post-card { border-left: 3px solid var(--neon); background: #111; padding: 15px; margin-bottom: 15px; border-radius: 0 5px 5px 0; }
+        
+        .input-group { position: sticky; bottom: 10px; background: var(--bg); padding: 10px; border: 1px solid #333; }
+        textarea { width: 100%; background: #000; color: #fff; border: 1px solid #444; padding: 10px; box-sizing: border-box; }
+        
+        button { width: 100%; background: var(--neon); color: #000; border: none; padding: 12px; font-weight: bold; margin-top: 5px; cursor: pointer; }
+        
+        .timestamp { font-size: 0.7rem; color: #666; display: block; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2 style="margin:0;">NEXUS: MOBILE COMMAND</h2>
+        <small>STATUS: ACTIVE // OPERATIVE_01</small>
+    </div>
+
+    <div class="feed" id="feed">
+        <div class="post-card">
+            <strong>ADMIN:</strong> Welcome to the network. Stay sharp.
+            <span class="timestamp">2026-03-04 21:56</span>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <textarea id="msg" placeholder="Enter Intel..." rows="2"></textarea>
+        <button onclick="transmit()">TRANSMIT</button>
+    </div>
+
+    <script>
+        /* The Execution (Tier 1) */
+        function transmit() {
+            const msgInput = document.getElementById('msg');
+            const feed = document.getElementById('feed');
+            
+            if(msgInput.value.trim() === "") return;
+
+            // Create new post element
+            const newPost = document.createElement('div');
+            newPost.className = 'post-card';
+            newPost.innerHTML = `<strong>OPERATIVE_01:</strong> ${msgInput.value}<span class="timestamp">JUST NOW</span>`;
+            
+            // Add to top of feed (The "BOS" - Break of Structure)
+            feed.prepend(newPost);
+            
+            // Clear input
+            msgInput.value = "";
+        }
+    </script>
+</body>
+</html>
+
